@@ -47,8 +47,11 @@ async function handleNextConnection() {
     }
 
     try {
-      const packageJson = require(path.resolve('package.json'))
-      const dependencies = packageJson.quicken[binName]
+      const config = {
+        ...require('./package.json').quicken,
+        ...require(path.resolve('package.json')).quicken
+      }
+      const dependencies = config[binName]
       for (const dependency of dependencies) {
         const filePath = resolve.sync(dependency, {basedir: path.resolve()})
         delete require.cache[filePath]
