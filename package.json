@@ -18,20 +18,20 @@
   },
   "dependencies": {
     "common-tags": "^1.8.0",
-    "ndjson": "^1.5.0",
+    "ndjson": "^2.0.0",
     "node-pty": "^0.9.0",
-    "npm": "^6.14.7",
+    "npm": "^6.14.9",
     "p-event": "^4.2.0",
-    "resolve": "^1.17.0",
-    "wait-on": "^5.1.0"
+    "resolve": "^1.19.0",
+    "wait-on": "^5.2.0"
   },
   "devDependencies": {
-    "ava": "^3.10.1",
+    "ava": "^3.13.0",
     "fs-extra": "^9.0.1",
     "quicken": "link:.",
-    "semantic-release": "^17.1.1",
-    "tempy": "^0.6.0",
-    "xo": "^0.32.1"
+    "semantic-release": "^17.3.0",
+    "tempy": "^1.0.0",
+    "xo": "^0.35.0"
   },
   "ava": {
     "verbose": true,

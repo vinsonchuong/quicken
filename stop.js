@@ -11,7 +11,7 @@ module.exports = async function () {
   }
 
   const socket = net.connect(socketPath, () => {
-    const input = ndjson.serialize()
+    const input = ndjson.stringify()
     input.pipe(socket)
     input.end({stop: true})
   })

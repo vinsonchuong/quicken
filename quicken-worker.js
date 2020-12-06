@@ -26,7 +26,7 @@ async function handleNextConnection() {
   }
 
   const input = ndjson.parse()
-  const output = ndjson.serialize()
+  const output = ndjson.stringify()
   socket.pipe(input)
   output.pipe(socket)
 
