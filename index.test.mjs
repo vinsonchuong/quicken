@@ -39,6 +39,7 @@ test('speeding up xo', async (t) => {
     t.fail()
   } catch (error) {
     t.log(`First run: ${Date.now() - firstRunStart}ms`)
+    t.log(error.stdout)
 
     t.true(error.stdout.includes('eol-last'))
     t.true(error.stdout.includes('semi'))
@@ -51,6 +52,7 @@ test('speeding up xo', async (t) => {
     t.fail()
   } catch (error) {
     t.log(`Second run: ${Date.now() - secondRunStart}ms`)
+    t.log(error.stdout)
 
     t.true(error.stdout.includes('eol-last'))
     t.true(error.stdout.includes('semi'))
