@@ -44,7 +44,6 @@ test('speeding up xo', async (t) => {
 
     t.true(error.stdout.includes('eol-last'))
     t.true(error.stdout.includes('semi'))
-    t.true(error.stdout.includes('2 errors'))
   }
 
   const secondRunStart = Date.now()
@@ -58,7 +57,6 @@ test('speeding up xo', async (t) => {
 
     t.true(error.stdout.includes('eol-last'))
     t.true(error.stdout.includes('semi'))
-    t.true(error.stdout.includes('2 errors'))
   }
 
   await exec('yarn quicken stop', {cwd: projectDir})
