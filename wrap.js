@@ -1,19 +1,22 @@
+const {promisify} = require('util')
 const {promises: fs} = require('fs')
 const path = require('path')
-const {promisify} = require('util')
-const npm = require('npm')
+const childProcess = require('child_process')
 const {stripIndent} = require('common-tags')
 
+const exec = promisify(childProcess.exec)
+
 module.exports = async function () {
-  await promisify(npm.load)()
+  const {stdout} = await exec('npm bin')
+  const npmBinDir = stdout.trim()
 
   const packageJson = JSON.parse(
     await fs.readFile(path.resolve('package.json'), 'utf-8')
   )
   for (const [binName] of Object.entries(packageJson.quicken)) {
     try {
-      const binPath = path.resolve(npm.bin, binName)
-      const actualBinPath = path.resolve(npm.bin, await fs.readlink(binPath))
+      const binPath = path.resolve(npmBinDir, binName)
+      const actualBinPath = path.resolve(npmBinDir, await fs.readlink(binPath))
 
       await fs.unlink(binPath)
       await fs.writeFile(

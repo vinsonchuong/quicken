@@ -1,7 +1,7 @@
-import test from 'ava'
-import * as path from 'path'
-import * as childProcess from 'child_process'
+import path from 'path'
+import childProcess from 'child_process'
 import {promisify} from 'util'
+import test from 'ava'
 import fs from 'fs-extra'
 import tempy from 'tempy'
 import commonTags from 'common-tags'
@@ -11,16 +11,11 @@ const exec = promisify(childProcess.exec)
 test('speeding up xo', async (t) => {
   const projectDir = tempy.directory()
 
-  await fs.outputJson(
-    path.join(projectDir, 'package.json'),
-    {
-      quicken: {
-        xo: [
-          'xo/cli-main.js'
-        ]
-      }
+  await fs.outputJson(path.join(projectDir, 'package.json'), {
+    quicken: {
+      xo: ['xo/cli-main.js']
     }
-  )
+  })
 
   await fs.outputFile(
     path.join(projectDir, 'index.js'),

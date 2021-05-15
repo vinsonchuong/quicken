@@ -1,11 +1,9 @@
 #!/usr/bin/env node
-'use strict'
-
 const net = require('net')
+const path = require('path')
 const pEvent = require('p-event')
 const quicken = require('quicken')
 const ndjson = require('ndjson')
-const path = require('path')
 const resolve = require('resolve')
 
 const originalStdoutWrite = process.stdout.write
@@ -60,7 +58,7 @@ async function handleNextConnection() {
       delete require.cache[binPath]
 
       process.chdir(cwd)
-      process.argv.splice(2, Infinity, ...args)
+      process.argv.splice(2, Number.POSITIVE_INFINITY, ...args)
       require(binPath)
     } catch {}
   })
